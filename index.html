@@ -53,6 +53,7 @@ h1{margin:0 0 10px;font-size:clamp(34px,7vw,52px);line-height:1.1;font-weight:70
 }
 .btn:hover{background:var(--green-hover)}
 .btn:active{transform:translateY(1px)}
+.btns{display:flex;flex-wrap:wrap;gap:0 12px}
 a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 
 .cmd{
@@ -131,7 +132,6 @@ footer a{color:var(--blue)}
     <div class="num">3</div>
     <div class="body">
       <h2>Сообщи свой ник</h2>
-      <!-- ЗАМЕНИТЬ: вставь свой Telegram вместо [МОЙ TELEGRAM], например https://t.me/username -->
       <a class="btn" href="https://t.me/bobesmogh" target="_blank" rel="noopener">Написать в Telegram</a>
       <p>Отправь мне ник, который ты создал на шаге 1, чтобы я добавил тебя в вайтлист. Без этого зайти на сервер не получится.</p>
     </div>
@@ -142,7 +142,6 @@ footer a{color:var(--blue)}
     <div class="num">4</div>
     <div class="body">
       <h2>Скачивание лаунчера PineconeMC</h2>
-      <!-- ЗАМЕНИТЬ: вставь ссылку на официальный сайт Pinecone вместо [ССЫЛКА НА ОФИЦИАЛЬНЫЙ САЙТ PINECONE] -->
       <a class="btn" href="https://elyprismlauncher.github.io/" target="_blank" rel="noopener">Скачать Pinecone</a>
       <p>Установи лаунчер и запусти его.</p>
     </div>
@@ -162,9 +161,14 @@ footer a{color:var(--blue)}
     <div class="num">6</div>
     <div class="body">
       <h2>Установка сборки</h2>
-      <!-- ЗАМЕНИТЬ: вставь ссылку на zip из GitHub Releases вместо [ССЫЛКА НА ZIP С GITHUB RELEASES] -->
-      <a class="btn" href="https://github.com/bobesmogh/YardCraft/releases/download/Client/YardCraft.zip" target="_blank" rel="noopener">Скачать сборку (zip)</a>
+      <div class="btns">
+        <a class="btn" href="https://github.com/bobesmogh/YardCraft/releases/download/Client/YardCraft.zip" target="_blank" rel="noopener">Сборка для ПК(zip)</a>
+        <!-- ЗАМЕНИТЬ: вставь ссылку на zip для слабых ПК вместо [ССЫЛКА НА ZIP ДЛЯ СЛАБЫХ ПК] -->
+        <a class="btn" href="https://github.com/bobesmogh/YardCraft/releases/download/lowClient/YardCraftpotato.zip" target="_blank" rel="noopener">Сборка для слабых ПК (zip)</a>
+      </div>
+      <p class="muted">Скачай что-то одно. Облегчённая сборка подойдёт, если у тебя слабый компьютер или игра тормозит.</p>
       <p>Скачай архив и <b>не распаковывай его</b>. В Pinecone нажми "Добавить экземпляр" -> "Импорт" выбери скачанный архив.</p>
+      <p>В нижней  части будет кнопка "ОК" начнется процесс установки.</p>
       <p>Все настройки в сборке уже оптимальные, ничего менять не нужно. После установки запусти сборку.</p>
     </div>
   </section>
@@ -200,7 +204,6 @@ footer a{color:var(--blue)}
 
 <footer>
   <div class="wrap">
-    <!-- ЗАМЕНИТЬ: вставь свой контакт вместо [МОЙ КОНТАКТ] -->
     Если что-то не получается, напиши мне в тг :)
   </div>
 </footer>
