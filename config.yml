@@ -1,0 +1,37 @@
+# Сколько чего нужно сдать. Ключи - названия материалов Bukkit.
+# ВНИМАНИЕ: числа ниже - временные. Поставь те, что назовёт Игнис.
+resources:
+  OBSIDIAN: 256
+  NETHER_STAR: 4
+  HEART_OF_THE_SEA: 8
+
+# Как предмет называется в сообщениях
+names:
+  OBSIDIAN: "Обсидиан"
+  NETHER_STAR: "Звезда иссушения"
+  HEART_OF_THE_SEA: "Сердце моря"
+
+# Команды от консоли, когда всё собрано (например, запуск следующего этапа)
+on-complete: []
+#  - "mm test ..."
+
+# Тексты в формате MiniMessage
+messages:
+  closed: "<red>Хранилище пока закрыто.</red>"
+  already-complete: "<green>Все ресурсы уже собраны.</green>"
+  deposit: "<gray><player></gray> <white>положил(а) в хранилище:</white> <gold><item> ×<amount></gold> <dark_gray>(<done>/<total>)</dark_gray>"
+  bossbar: "<light_purple>Ресурсы для открытия Края</light_purple> <white><done>/<total></white> <gray>(<percent>%)</gray>"
+  status-header: "<gold>Сбор ресурсов:</gold>"
+  status-line: " <white><item>:</white> <yellow><done>/<need></yellow>"
+  complete: "<green><bold>Все ресурсы собраны!</bold></green>"
+  no-permission: "<red>Нет прав.</red>"
+  started: "<green>Сбор ресурсов запущен.</green>"
+  stopped: "<yellow>Сбор ресурсов остановлен.</yellow>"
+  reset-done: "<yellow>Прогресс сброшен, хранилище закрыто.</yellow>"
+  no-storage: "<red>Сначала задай хранилище: /endres setstorage</red>"
+  no-resources: "<red>В config.yml не указано ни одного ресурса.</red>"
+  storage-set: "<green>Хранилище установлено: <x> <y> <z></green>"
+  look-at-block: "<red>Посмотри на блок (не дальше 6 блоков).</red>"
+  only-player: "<red>Команда только для игрока.</red>"
+  reloaded: "<green>Конфиг перезагружен.</green>"
+  phase-line: "<gray>Состояние: <phase></gray>"
