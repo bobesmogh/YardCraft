@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Установка сборки</title>
-<meta name="theme-color" content="#1a1a1a">
+<title>YardCraft — установка и события</title>
+<meta name="theme-color" content="#3c1e1e">
 <!-- Шрифт: если Google Fonts недоступен, подставится системный шрифт. Убери эти 3 строки, если шрифт не нужен. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#1a1a1a;
-  --surface:#232323;
-  --line:#343434;
-  --text:#e8e8e8;
-  --muted:#9a9a9a;
-  --green:#208B62;
-  --green-hover:#27a577;
-  --blue:#5C9DAE;
+  --bg:#3c1e1e;
+  --surface:#492727;
+  --line:#704141;
+  --text:#fff4e8;
+  --muted:#dbc1b5;
+  --green:#a85226;
+  --green-hover:#c96b2c;
+  --blue:#ffd369;
   --font:"Roboto Condensed",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
 }
@@ -30,12 +30,21 @@ body{
   -webkit-text-size-adjust:100%;
 }
 .wrap{max-width:760px;margin:0 auto;padding:0 20px}
-header{padding:72px 0 40px;border-bottom:1px solid var(--line)}
+header{padding:16px 0 0;border-bottom:1px solid var(--line)}
+.brand{height:clamp(130px,27vw,235px);position:relative;overflow:hidden}
+.brand img{display:block;width:100%;height:auto;position:absolute;top:50%;transform:translateY(-50%)}
+.tabs{display:flex;gap:8px;padding:0 0 18px}
+.tab{padding:12px 20px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--text);font:700 17px var(--font);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--blue);border-color:var(--blue);color:#3c1e1e}
+.tab:hover:not([aria-selected="true"]){border-color:var(--blue)}
+.panel[hidden]{display:none}
+.panel-heading{padding:42px 0 12px}
+.events-placeholder{min-height:300px;padding:44px 0;font-size:22px}
 h1{margin:0 0 10px;font-size:clamp(34px,7vw,52px);line-height:1.1;font-weight:700;letter-spacing:-.01em}
 .lead{margin:0;color:var(--muted);font-size:19px}
 
 .step{display:grid;grid-template-columns:72px 1fr;gap:0 20px;padding:48px 0;border-bottom:1px solid var(--line)}
-.num{font-size:64px;line-height:1;font-weight:700;color:var(--green)}
+.num{font-size:64px;line-height:1;font-weight:700;color:var(--blue)}
 .step h2{margin:6px 0 12px;font-size:26px;line-height:1.2;font-weight:700}
 .step p{margin:0 0 14px}
 .step ul{margin:0 0 14px;padding-left:20px}
@@ -68,14 +77,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
   font-family:inherit;font-size:15px;cursor:pointer;
   transition:background-color .2s ease,color .2s ease,border-color .2s ease;
 }
-.cmd .copy:hover{background:var(--blue);color:#1a1a1a}
+.cmd .copy:hover{background:var(--blue);color:#3c1e1e}
 .cmd .copy.done{background:var(--green);border-color:var(--green);color:#fff}
 .cmd-label{display:block;margin:0 0 4px;color:var(--muted);font-size:15px}
 
 kbd{
   display:inline-block;min-width:30px;padding:2px 9px;text-align:center;
   font-family:var(--mono);font-size:15px;color:var(--text);
-  background:#2c2c2c;border:1px solid #454545;border-bottom-width:3px;border-radius:5px;
+  background:#543030;border:1px solid #815050;border-bottom-width:3px;border-radius:5px;
 }
 
 
@@ -84,7 +93,9 @@ footer a{color:var(--blue)}
 
 @media (max-width:600px){
   body{font-size:17px}
-  header{padding:48px 0 28px}
+  header{padding-top:8px}
+  .tabs{gap:6px}
+  .tab{flex:1;padding:11px 8px;font-size:15px}
   .step{grid-template-columns:1fr;padding:36px 0}
   .num{font-size:48px;margin-bottom:4px}
   .step h2{margin-top:0}
@@ -99,12 +110,20 @@ footer a{color:var(--blue)}
 
 <header>
   <div class="wrap">
-    <h1>Установка сборки</h1>
-    <p class="lead">Восемь коротких шагов от регистрации до первого входа на сервер.</p>
+    <div class="brand"><img src="YardCraft.png" alt="YardCraft" width="1254" height="1254"></div>
+    <nav class="tabs" role="tablist" aria-label="Разделы сайта">
+      <button class="tab" id="tab-install" type="button" role="tab" aria-controls="panel-install" aria-selected="true" tabindex="0">Инструкция по установке</button>
+      <button class="tab" id="tab-events" type="button" role="tab" aria-controls="panel-events" aria-selected="false" tabindex="-1">События</button>
+    </nav>
   </div>
 </header>
 
 <main class="wrap">
+<div class="panel" id="panel-install" role="tabpanel" aria-labelledby="tab-install">
+  <div class="panel-heading">
+    <h1>Установка сборки</h1>
+    <p class="lead">Восемь коротких шагов от регистрации до первого входа на сервер.</p>
+  </div>
 
   <!-- ШАГ 1 -->
   <section class="step" id="step-1">
@@ -162,9 +181,8 @@ footer a{color:var(--blue)}
     <div class="body">
       <h2>Установка сборки</h2>
       <div class="btns">
-        <a class="btn" href="https://github.com/bobesmogh/YardCraft/releases/download/Client/Yardcraft_v.1.1.zip" target="_blank" rel="noopener">Сборка для ПК(zip)</a>
-        <!-- ЗАМЕНИТЬ: вставь ссылку на zip для слабых ПК вместо [ССЫЛКА НА ZIP ДЛЯ СЛАБЫХ ПК] -->
-        <a class="btn" href="https://github.com/bobesmogh/YardCraft/releases/download/lowClient/YardCraftpotato_v.1.1.zip" target="_blank" rel="noopener">Сборка для слабых ПК (zip)</a>
+        <a class="btn" href="https://github.com/bobesmogh/YardCraft/releases/download/v2.0/Yardcraft_v2.0.zip" target="_blank" rel="noopener">Сборка для ПК (zip)</a>
+        <a class="btn" href="https://github.com/bobesmogh/YardCraft/releases/download/v2.0/YardCraftpotato_v2.0.zip" target="_blank" rel="noopener">Сборка для слабых ПК (zip)</a>
       </div>
       <p class="muted">Скачай что-то одно. Облегчённая сборка подойдёт, если у тебя слабый компьютер или игра тормозит.</p>
       <p>Скачай архив и <b>не распаковывай его</b>. В Pinecone нажми "Добавить экземпляр" -> "Импорт" выбери скачанный архив.</p>
@@ -200,6 +218,11 @@ footer a{color:var(--blue)}
     </div>
   </section>
 
+</div>
+<div class="panel" id="panel-events" role="tabpanel" aria-labelledby="tab-events" hidden>
+  <div class="panel-heading"><h1>События</h1></div>
+  <p class="events-placeholder">Скоро здесь появится хронология событий</p>
+</div>
 </main>
 
 <footer>
@@ -210,6 +233,31 @@ footer a{color:var(--blue)}
 
 <script>
 (function () {
+  var tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+  function selectTab(tab, updateHash) {
+    tabs.forEach(function (item) {
+      var active = item === tab;
+      item.setAttribute('aria-selected', String(active));
+      item.tabIndex = active ? 0 : -1;
+      document.getElementById(item.getAttribute('aria-controls')).hidden = !active;
+    });
+    if (updateHash) history.replaceState(null, '', tab.id === 'tab-events' ? '#events' : '#install');
+  }
+  tabs.forEach(function (tab, index) {
+    tab.addEventListener('click', function () { selectTab(tab, true); });
+    tab.addEventListener('keydown', function (event) {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      var next = tabs[(index + (event.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+      selectTab(next, true);
+      next.focus();
+    });
+  });
+  selectTab(location.hash === '#events' ? tabs[1] : tabs[0], false);
+  window.addEventListener('hashchange', function () {
+    selectTab(location.hash === '#events' ? tabs[1] : tabs[0], false);
+  });
+
   function fallbackCopy(text) {
     var ta = document.createElement('textarea');
     ta.value = text;
