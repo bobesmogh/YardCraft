@@ -5,11 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>YardCraft — установка и события</title>
 <meta name="theme-color" content="#3c1e1e">
-<!-- Шрифт: если Google Fonts недоступен, подставится системный шрифт. Убери эти 3 строки, если шрифт не нужен. -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:Monocraft;src:url("fonts/Monocraft-Regular.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:Monocraft;src:url("fonts/Monocraft-Bold.otf") format("opentype");font-weight:700;font-display:swap}
 :root{
   --bg:#3c1e1e;
   --surface:#492727;
@@ -19,8 +17,7 @@
   --green:#a85226;
   --green-hover:#c96b2c;
   --blue:#ffd369;
-  --font:"Roboto Condensed",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  --font:Monocraft,ui-monospace,monospace;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;color-scheme:dark}
@@ -31,9 +28,10 @@ body{
 }
 .wrap{max-width:760px;margin:0 auto;padding:0 20px}
 header{padding:16px 0 0;border-bottom:1px solid var(--line)}
-.brand{height:clamp(130px,27vw,235px);position:relative;overflow:hidden}
-.brand img{display:block;width:100%;height:auto;position:absolute;top:50%;transform:translateY(-50%)}
-.tabs{display:flex;gap:8px;padding:0 0 18px}
+header .wrap{max-width:none;margin:0;padding:0 clamp(16px,3vw,48px)}
+.brand{width:220px;height:86px;position:relative;overflow:hidden}
+.brand img{display:block;width:250px;height:auto;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+.tabs{display:flex;width:max-content;gap:8px;padding:0 0 18px}
 .tab{padding:12px 20px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--text);font:700 17px var(--font);cursor:pointer}
 .tab[aria-selected="true"]{background:var(--blue);border-color:var(--blue);color:#3c1e1e}
 .tab:hover:not([aria-selected="true"]){border-color:var(--blue)}
@@ -51,7 +49,6 @@ h1{margin:0 0 10px;font-size:clamp(34px,7vw,52px);line-height:1.1;font-weight:70
 .step li{margin-bottom:6px}
 .body{min-width:0}
 .muted{color:var(--muted);font-size:16px}
-.blue{color:var(--blue)}
 
 .btn{
   display:inline-block;margin:4px 0 14px;padding:12px 22px;
@@ -65,25 +62,9 @@ h1{margin:0 0 10px;font-size:clamp(34px,7vw,52px);line-height:1.1;font-weight:70
 .btns{display:flex;flex-wrap:wrap;gap:0 12px}
 a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 
-.cmd{
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-  margin:0 0 10px;padding:10px 10px 10px 16px;
-  background:var(--surface);border:1px solid var(--line);border-radius:4px;
-}
-.cmd code{font-family:var(--mono);font-size:15px;color:var(--text);overflow-x:auto;white-space:nowrap;min-width:0}
-.cmd .copy{
-  flex:none;padding:6px 14px;background:transparent;color:var(--blue);
-  border:1px solid var(--blue);border-radius:4px;
-  font-family:inherit;font-size:15px;cursor:pointer;
-  transition:background-color .2s ease,color .2s ease,border-color .2s ease;
-}
-.cmd .copy:hover{background:var(--blue);color:#3c1e1e}
-.cmd .copy.done{background:var(--green);border-color:var(--green);color:#fff}
-.cmd-label{display:block;margin:0 0 4px;color:var(--muted);font-size:15px}
-
 kbd{
   display:inline-block;min-width:30px;padding:2px 9px;text-align:center;
-  font-family:var(--mono);font-size:15px;color:var(--text);
+  font-family:var(--font);font-size:15px;color:var(--text);
   background:#543030;border:1px solid #815050;border-bottom-width:3px;border-radius:5px;
 }
 
@@ -94,7 +75,7 @@ footer a{color:var(--blue)}
 @media (max-width:600px){
   body{font-size:17px}
   header{padding-top:8px}
-  .tabs{gap:6px}
+  .tabs{width:100%;gap:6px}
   .tab{flex:1;padding:11px 8px;font-size:15px}
   .step{grid-template-columns:1fr;padding:36px 0}
   .num{font-size:48px;margin-bottom:4px}
@@ -195,13 +176,10 @@ footer a{color:var(--blue)}
   <section class="step" id="step-7">
     <div class="num">7</div>
     <div class="body">
-      <h2>Вход на сервер и регистрация в AuthMe</h2>
-      <p>Сервер уже добавлен в список серверов внутри сборки, адрес вводить не нужно. Зайди на него и введи в чате:</p>
-      <span class="cmd-label">Первый раз</span>
-      <div class="cmd"><code>/register &lt;пароль&gt; &lt;пароль&gt;</code><button class="copy" type="button" data-copy="/register <пароль> <пароль>">Копировать</button></div>
-      <span class="cmd-label">В следующие разы</span>
-      <div class="cmd"><code>/login &lt;пароль&gt;</code><button class="copy" type="button" data-copy="/login <пароль>">Копировать</button></div>
-      <p class="muted">Вместо <span class="blue">&lt;пароль&gt;</span> впиши свой пароль без скобок. Лучше не использовать тот же пароль, что на Ely.by или от почты.</p>
+      <h2>Вход на сервер</h2>
+      <p>Сервер уже добавлен в список внутри сборки, адрес вводить не нужно. Зайди на него и зарегистрируйся в появившемся окне.</p>
+      <p>Придумай пароль из букв и цифр и введи его в игровом интерфейсе. Запомни или сохрани пароль: он понадобится для следующих входов на сервер.</p>
+      <p class="muted">Не используй тот же пароль, что от Ely.by или почты.</p>
     </div>
   </section>
 
@@ -218,18 +196,13 @@ footer a{color:var(--blue)}
     </div>
   </section>
 
+  <footer>Если что-то не получается, напиши мне в тг :)</footer>
 </div>
 <div class="panel" id="panel-events" role="tabpanel" aria-labelledby="tab-events" hidden>
   <div class="panel-heading"><h1>События</h1></div>
   <p class="events-placeholder">Скоро здесь появится хронология событий</p>
 </div>
 </main>
-
-<footer>
-  <div class="wrap">
-    Если что-то не получается, напиши мне в тг :)
-  </div>
-</footer>
 
 <script>
 (function () {
@@ -258,44 +231,6 @@ footer a{color:var(--blue)}
     selectTab(location.hash === '#events' ? tabs[1] : tabs[0], false);
   });
 
-  function fallbackCopy(text) {
-    var ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.position = 'fixed';
-    ta.style.opacity = '0';
-    document.body.appendChild(ta);
-    ta.select();
-    try { document.execCommand('copy'); } catch (e) {}
-    document.body.removeChild(ta);
-  }
-
-  document.querySelectorAll('.copy').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var text = btn.getAttribute('data-copy');
-      var original = btn.getAttribute('data-label') || btn.textContent;
-      btn.setAttribute('data-label', original);
-
-      var done = function () {
-        btn.textContent = 'Скопировано';
-        btn.classList.add('done');
-        clearTimeout(btn._t);
-        btn._t = setTimeout(function () {
-          btn.textContent = original;
-          btn.classList.remove('done');
-        }, 1500);
-      };
-
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(done, function () {
-          fallbackCopy(text);
-          done();
-        });
-      } else {
-        fallbackCopy(text);
-        done();
-      }
-    });
-  });
 })();
 </script>
 </body>
